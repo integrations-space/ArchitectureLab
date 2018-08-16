@@ -93,6 +93,36 @@ def generate_cube_mesh_data(width, height, depth):
     return myvertices, [], myfaces
 
 # ------------------------------------------------------------------------------
+# Creates cylinder filled with ngon mesh data.
+# ------------------------------------------------------------------------------
+def generate_cylinder_ngonfill_mesh_data(radius, vertices, depth):
+    posz = depth /2
+    myvertices = [(radius, 0.0, -posz), (radius, 0.0, posz)]
+    myedges = [[0, 1]]
+    myvertices, myedges, myfaces = generate_sord_mesh(myvertices, myedges, vertices, close_top=True, close_bottom=True)
+    return myvertices, [], myfaces
+
+# ------------------------------------------------------------------------------
+# Creates cylinder witout filling mesh data.
+# ------------------------------------------------------------------------------
+def generate_cylinder_nofill_mesh_data(radius, vertices, depth):
+    posz = depth /2
+    myvertices = [(radius, 0.0, -posz), (radius, 0.0, posz)]
+    myedges = [[0, 1]]
+    myvertices, myedges, myfaces = generate_sord_mesh(myvertices, myedges, vertices, close_top=False, close_bottom=False)
+    return myvertices, [], myfaces
+
+# ------------------------------------------------------------------------------
+# Creates cylinder filled with triangle fan mesh data.
+# ------------------------------------------------------------------------------
+def generate_cylinder_tfanfill_mesh_data(radius, vertices, depth):
+    posz = depth /2
+    myvertices = [(radius, 0.0, -posz), (radius, 0.0, posz)]
+    myedges = [[0, 1]]
+    myvertices, myedges, myfaces = generate_sord_mesh(myvertices, myedges, vertices, close_top='TFAN', close_bottom='TFAN')
+    return myvertices, [], myfaces
+
+# ------------------------------------------------------------------------------
 # Creates plane mesh data.
 # ------------------------------------------------------------------------------
 def generate_plane_mesh_data(width, height):
@@ -247,8 +277,29 @@ def generate_sord_mesh(sordvertices, sordedges, segments, close_top=True, close_
         for ts in segv:
             topf.append(ts * segh + topv)
             bottomf.append(ts * segh + bottomv)
-        if close_top:
+        if close_top == 'TFAN':
+            create_triangle_fan(myvertices, myfaces, topf)
+        elif close_top:
             myfaces.append(topf)
-        if close_bottom:
+        if close_bottom == 'TFAN':
+            create_triangle_fan(myvertices, myfaces, bottomf)
+        elif close_bottom:
             myfaces.append(bottomf)
     return myvertices, myedges, myfaces
+
+# --------------------------------------------------------------------
+# Creates triangle fan mesh by connecting given vertices
+# myvertices - list of mesh vertices
+# myfaces - list of existing faces
+# closevertices - list of vertex numbers to connect into fan shape
+# centervertex - fan center vertex number, None if new vertex is required
+# --------------------------------------------------------------------
+def create_triangle_fan(myvertices, myfaces, closevertices, centervertex=None):
+    lastcvert = closevertices[-1]
+    if centervertex is None:
+        lastvert = myvertices[lastcvert]
+        centervertex = len(myvertices)
+        myvertices.append((0.0, 0.0, lastvert[2]))
+    for cvert in closevertices:
+        myfaces.append([centervertex, lastcvert, cvert])
+        lastcvert = cvert

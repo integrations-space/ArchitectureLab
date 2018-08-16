@@ -54,8 +54,9 @@ if "bpy" in locals():
     importlib.reload(archlab_dcrt_plate_tool)
     importlib.reload(archlab_frnt_bench_tool)
     importlib.reload(archlab_frnt_shelve_tool)
+    importlib.reload(archlab_mesh_circle_tool)
     importlib.reload(archlab_mesh_cube_tool)
-    importlib.reload(archlab_mesh_cube_tool)
+    importlib.reload(archlab_mesh_cylinder_tool)
     importlib.reload(archlab_mesh_plane_tool)
     importlib.reload(archlab_mesh_sphere_tool)
 
@@ -70,6 +71,7 @@ else:
     from . import archlab_frnt_shelve_tool
     from . import archlab_mesh_circle_tool
     from . import archlab_mesh_cube_tool
+    from . import archlab_mesh_cylinder_tool
     from . import archlab_mesh_plane_tool
     from . import archlab_mesh_sphere_tool
 
@@ -94,6 +96,8 @@ modules = [
     archlab_mesh_circle_tool.ArchLabCircleGeneratorPanel,
     archlab_mesh_cube_tool.ArchLabCube,
     archlab_mesh_cube_tool.ArchLabCubeGeneratorPanel,
+    archlab_mesh_cylinder_tool.ArchLabCylinder,
+    archlab_mesh_cylinder_tool.ArchLabCylinderGeneratorPanel,
     archlab_mesh_plane_tool.ArchLabPlane,
     archlab_mesh_plane_tool.ArchLabPlaneGeneratorPanel,
     archlab_mesh_sphere_tool.ArchLabIcoSphere,
@@ -146,6 +150,7 @@ class ArchLabMeshPrimitivesAdd(Menu):
         layout.operator("mesh.archlab_circle", text="Circle", icon="MESH_CIRCLE")
         layout.operator("mesh.archlab_uvsphere", text="UV Sphere", icon="MESH_UVSPHERE")
         layout.operator("mesh.archlab_icosphere", text="Ico Sphere", icon="MESH_ICOSPHERE")
+        layout.operator("mesh.archlab_cylinder", text="Cylinder", icon="MESH_CYLINDER")
 
 # ----------------------------------------------------------
 # ArchLab menu
@@ -217,6 +222,7 @@ class ArchLabCreatePanel(Panel):
             column.operator("mesh.archlab_circle", text="Circle", icon="MESH_CIRCLE")
             column.operator("mesh.archlab_uvsphere", text="UV Sphere", icon="MESH_UVSPHERE")
             column.operator("mesh.archlab_icosphere", text="Ico Sphere", icon="MESH_ICOSPHERE")
+            column.operator("mesh.archlab_cylinder", text="Cylinder", icon="MESH_CYLINDER")
 
 modules.extend([
     ArchLabMeshCustomMenuAdd,
