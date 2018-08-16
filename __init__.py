@@ -47,6 +47,7 @@ bl_info = {
 # ----------------------------------------------
 if "bpy" in locals():
     import importlib
+    importlib.reload(archlab_bldn_column_tool)
     importlib.reload(archlab_bldn_room_tool)
     importlib.reload(archlab_bldn_stairs_tool)
     importlib.reload(archlab_bldn_wall_tool)
@@ -62,6 +63,7 @@ if "bpy" in locals():
 
     print("archlab: Reloaded multifiles")
 else:
+    from . import archlab_bldn_column_tool
     from . import archlab_bldn_room_tool
     from . import archlab_bldn_stairs_tool
     from . import archlab_bldn_wall_tool
@@ -78,6 +80,8 @@ else:
     print("archlab: Imported multifiles")
 
 modules = [
+    archlab_bldn_column_tool.ArchLabColumn,
+    archlab_bldn_column_tool.ArchLabColumnGeneratorPanel,
     archlab_bldn_room_tool.ArchLabRoom,
     archlab_bldn_room_tool.ArchLabRoomGeneratorPanel,
     archlab_bldn_stairs_tool.ArchLabStairs,
@@ -162,6 +166,7 @@ class ArchLabMeshCustomMenuAdd(Menu):
     def draw(self, context):
         layout = self.layout
         layout.operator_context = 'INVOKE_REGION_WIN'
+        layout.operator("mesh.archlab_column", text="Column")
         layout.operator("mesh.archlab_room", text="Room")
         layout.operator("mesh.archlab_stairs", text="Stairs")
         layout.operator("mesh.archlab_wall", text="Wall")
@@ -201,6 +206,7 @@ class ArchLabCreatePanel(Panel):
         else:
             column = layout.column(align=True)
             column.label('Construction mesh:')
+            column.operator("mesh.archlab_column", text="Column")
             column.operator("mesh.archlab_room", text="Room")
             column.operator("mesh.archlab_stairs", text="Stairs")
             column.operator("mesh.archlab_wall", text="Wall")

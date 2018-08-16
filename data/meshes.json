@@ -40,6 +40,14 @@
             "Edges": [[0,1],[1,2],[2,3]],
             "Faces": []
         },
+        "Column01": {
+            "Name": "Column",
+            "ConstructMethod": "SoR_D",
+            "RealSize": [1.0, 1.0, 1.0],
+            "Vertices": [[1.0, 0.0, 0.0], [1.0, 0.0, 1.0]],
+            "Edges": [[0, 1]],
+            "Faces": []
+        },
         "Cup01": {
             "Name": "Cup A",
             "ConstructMethod": "SoR_D",
