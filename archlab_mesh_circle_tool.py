@@ -229,10 +229,10 @@ Object.ArchLabCircleGenerator = CollectionProperty(type=ArchLabCircleProperties)
 # ------------------------------------------------------------------
 class ArchLabCircleGeneratorPanel(Panel):
     bl_idname = "OBJECT_PT_circle_generator"
-    bl_label = "Circle"
+    bl_label = "Architecture Lab"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'TOOLS'
-    bl_category = 'ArchLab'
+    bl_category = 'Tools'
 
     # -----------------------------------------------------
     # Verify if visible

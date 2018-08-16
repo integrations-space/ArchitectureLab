@@ -151,10 +151,10 @@ Object.ArchLabCubeGenerator = CollectionProperty(type=ArchLabCubeProperties)
 # ------------------------------------------------------------------
 class ArchLabCubeGeneratorPanel(Panel):
     bl_idname = "OBJECT_PT_cube_generator"
-    bl_label = "Cube"
+    bl_label = "Architecture Lab"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'TOOLS'
-    bl_category = 'ArchLab'
+    bl_category = 'Tools'
 
     # -----------------------------------------------------
     # Verify if visible

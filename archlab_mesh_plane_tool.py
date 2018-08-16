@@ -200,10 +200,10 @@ Object.ArchLabPlaneGenerator = CollectionProperty(type=ArchLabPlaneProperties)
 # ------------------------------------------------------------------
 class ArchLabPlaneGeneratorPanel(Panel):
     bl_idname = "OBJECT_PT_plane_generator"
-    bl_label = "Plane"
+    bl_label = "Architecture Lab"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'TOOLS'
-    bl_category = 'ArchLab'
+    bl_category = 'Tools'
 
     # -----------------------------------------------------
     # Verify if visible

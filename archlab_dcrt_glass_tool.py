@@ -163,10 +163,10 @@ Object.ArchLabGlassGenerator = CollectionProperty(type=ArchLabGlassProperties)
 # ------------------------------------------------------------------
 class ArchLabGlassGeneratorPanel(Panel):
     bl_idname = "OBJECT_PT_glass_generator"
-    bl_label = "Glass"
+    bl_label = "Architecture Lab"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'TOOLS'
-    bl_category = 'ArchLab'
+    bl_category = 'Tools'
 
     # -----------------------------------------------------
     # Verify if visible

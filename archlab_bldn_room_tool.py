@@ -331,10 +331,10 @@ Object.ArchLabRoomGenerator = CollectionProperty(type=ArchLabRoomProperties)
 # ------------------------------------------------------------------
 class ArchLabRoomGeneratorPanel(Panel):
     bl_idname = "OBJECT_PT_room_generator"
-    bl_label = "Room"
+    bl_label = "Architecture Lab"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'TOOLS'
-    bl_category = 'ArchLab'
+    bl_category = 'Tools'
 
     # -----------------------------------------------------
     # Verify if visible
