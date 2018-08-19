@@ -51,6 +51,7 @@ if "bpy" in locals():
     importlib.reload(archlab_bldn_room_tool)
     importlib.reload(archlab_bldn_stairs_tool)
     importlib.reload(archlab_bldn_wall_tool)
+    importlib.reload(archlab_bldn_window_tool)
     importlib.reload(archlab_dcrt_glass_tool)
     importlib.reload(archlab_dcrt_plate_tool)
     importlib.reload(archlab_frnt_bench_tool)
@@ -67,6 +68,7 @@ else:
     from . import archlab_bldn_room_tool
     from . import archlab_bldn_stairs_tool
     from . import archlab_bldn_wall_tool
+    from . import archlab_bldn_window_tool
     from . import archlab_dcrt_glass_tool
     from . import archlab_dcrt_plate_tool
     from . import archlab_frnt_bench_tool
@@ -88,6 +90,8 @@ modules = [
     archlab_bldn_stairs_tool.ArchLabStairsGeneratorPanel,
     archlab_bldn_wall_tool.ArchLabWall,
     archlab_bldn_wall_tool.ArchLabWallGeneratorPanel,
+    archlab_bldn_window_tool.ArchLabWindow,
+    archlab_bldn_window_tool.ArchLabWindowGeneratorPanel,
     archlab_dcrt_glass_tool.ArchLabGlass,
     archlab_dcrt_glass_tool.ArchLabGlassGeneratorPanel,
     archlab_dcrt_plate_tool.ArchLabPlate,
@@ -170,6 +174,7 @@ class ArchLabMeshCustomMenuAdd(Menu):
         layout.operator("mesh.archlab_room", text="Room")
         layout.operator("mesh.archlab_stairs", text="Stairs")
         layout.operator("mesh.archlab_wall", text="Wall")
+        layout.operator("mesh.archlab_window", text="Window")
         layout.separator()
         layout.menu("INFO_MT_archlab_mesh_primitives_add", text="Primitives", icon="GROUP")
         layout.menu("INFO_MT_archlab_mesh_decorations_add", text="Decorations", icon="GROUP")
@@ -210,6 +215,7 @@ class ArchLabCreatePanel(Panel):
             column.operator("mesh.archlab_room", text="Room")
             column.operator("mesh.archlab_stairs", text="Stairs")
             column.operator("mesh.archlab_wall", text="Wall")
+            column.operator("mesh.archlab_window", text="Window")
 
             column = layout.column(align=True)
             column.label('Furnitures:')
