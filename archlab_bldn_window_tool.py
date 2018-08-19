@@ -66,7 +66,6 @@ def shape_window_mesh(mywindow, tmp_mesh, update=False):
     mywindow.data = tmp_mesh
 
     remove_doubles(mywindow)
-    #set_normals(mywindow)
 
     # deactivate others
     for o in bpy.data.objects:
@@ -109,6 +108,7 @@ def update_window_mesh_data(mymesh, width, height, depth):
 
         (8, 9, 17, 16), (13, 12, 20, 21), (12, 8, 16, 20), (9, 13, 21, 17),     # F # B T L R
         (11, 10, 18, 19), (14, 15, 23, 22), (10, 14, 22, 18), (15, 11, 19, 23), # B # B T R L
+        (19, 18, 16, 17), (22, 23, 21, 20), (18, 22, 20, 16), (23, 19, 17, 21), # I # B T L R
 
         (16, 17, 21, 20), (19, 18, 22, 23)                                      # F B # #
     ]
